@@ -3,8 +3,16 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Hola mundo")
-    fmt.Println("1 + 2 =", 1+2)
-    fmt.Println("1.3 + 4.2 =", 1.3+4.2)
+    var cadena0 string
+    var cadena1 string = "Hola mundo 1"
+    var cadena2 = "Hola mundo 2"
+    cadena3 := "Hola mundo 3"
+
+    fmt.Println(cadena0)
+    fmt.Println(cadena1)
+    fmt.Println(cadena2)
+    fmt.Println(cadena3)
+    fmt.Println(true == true)
+    fmt.Println(true != true)
 }
 
