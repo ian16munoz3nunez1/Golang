@@ -3,20 +3,22 @@ package main
 import "fmt"
 
 func main() {
-    var opcion int
+    var temp int
 
-    fmt.Print("Elige una opcion: ")
-    fmt.Scan(&opcion)
+    fmt.Print("Ingresa la temperatura: ")
+    fmt.Scan(&temp)
 
-    switch opcion {
-        case 1:
-            fmt.Println("Opcion 1")
-        case 2:
-            fmt.Println("Opcion 2")
-        case 3:
-            fmt.Println("Opcion 3")
+    switch {
+        case temp < 0:
+            fmt.Println("Esta helado")
+        case temp >= 0 && temp < 16:
+            fmt.Println("Esta frio")
+        case temp >= 16 && temp < 25:
+            fmt.Println("La temperatura esta perfecta")
+        case temp >= 25 && temp < 32:
+            fmt.Println("Esta caliente")
         default:
-            fmt.Println("La opcion", opcion, "no es valida")
+            fmt.Println("Esta ardiendo")
     }
 }
 
