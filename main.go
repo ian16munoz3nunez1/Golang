@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-    var s []int
+    s := make([]int, 5, 16)
 
     fmt.Println(len(s), cap(s))
     s = append(s, 1, 2, 3, 4, 5)
