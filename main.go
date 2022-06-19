@@ -2,28 +2,14 @@ package main
 
 import (
     "fmt"
-    "math"
+    "figuras/figuras"
 )
 
-type Circulo struct {
-    radio float64
-}
-
-func (circulo *Circulo) area() float64 {
-    return circulo.radio * circulo.radio * math.Pi
-}
-
 func main() {
-    c01 := Circulo{}
-    c02 := Circulo{radio: 16}
-    c03 := Circulo{8}
-    c04 := new(Circulo)
-    c05 := &Circulo{4}
+    c01 := figuras.Circulo{16}
+    r01 := figuras.Rectangulo{2, 8}
 
-    fmt.Println(c01, c01.area())
-    fmt.Println(c02, c02.area())
-    fmt.Println(c03, c03.area())
-    fmt.Println(c04, c04.area())
-    fmt.Println(c05, c05.area())
+    fmt.Println(c01, c01.Area())
+    fmt.Println(r01, r01.Area())
 }
 
