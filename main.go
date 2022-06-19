@@ -13,7 +13,8 @@ func cont(numero int) {
 }
 
 func main() {
-    go cont(4)
+    go cont(0)
+    go cont(1)
 
     var input string
     fmt.Scanln(&input)
