@@ -5,32 +5,34 @@ import (
     "time"
 )
 
-func pinger(c chan string) {
-    for {
-        c <- "ping"
-    }
-}
-
-func ponger(c chan string) {
-    for {
-        c <- "pong"
-    }
-}
-
-func printer(c chan string) {
-    for {
-        msg := <- c
-        fmt.Println(msg)
-        time.Sleep(time.Millisecond * 500)
-    }
-}
-
 func main() {
-    var c chan string = make(chan string)
+    c1 := make(chan string)
+    c2 := make(chan string)
 
-    go pinger(c)
-    go ponger(c)
-    go printer(c)
+    go func () {
+        for {
+            c1 <- "Mensaje desde el canal 1"
+            time.Sleep(time.Second * 2)
+        }
+    }()
+
+    go func () {
+        for {
+            c2 <- "Mensaje desde el canal 2"
+            time.Sleep(time.Second)
+        }
+    }()
+
+    go func () {
+        for {
+            select {
+                case msg := <- c1:
+                    fmt.Println(msg)
+                case msg := <- c2:
+                    fmt.Println(msg)
+            }
+        }
+    }()
 
     var input string
     fmt.Scanln(&input)
