@@ -2,36 +2,20 @@ package main
 
 import (
     "fmt"
-    "sort"
+    "time"
 )
 
-type Persona struct {
-    nombre string
-    edad uint64
+func cont(numero int) {
+    for i := 1; i <= 16; i++ {
+        fmt.Println(numero, ":", i)
+        time.Sleep(time.Millisecond * 200)
+    }
 }
 
-type ByNombre []Persona
-func (a ByNombre) Len() int {return len(a)}
-func (a ByNombre) Swap(i, j int) {a[i], a[j] = a[j], a[i]}
-func (a ByNombre) Less(i, j int) bool {return a[i].nombre < a[j].nombre}
-
-type ByEdad []Persona
-func (a ByEdad) Len() int {return len(a)}
-func (a ByEdad) Swap(i, j int) {a[i], a[j] = a[j], a[i]}
-func (a ByEdad) Less(i, j int) bool {return a[i].edad < a[j].edad}
-
 func main() {
-    ps := []Persona{
-        Persona{"persona3", 31},
-        Persona{"persona1", 20},
-        Persona{"persona2", 54},
-    }
-    fmt.Println(ps)
+    go cont(4)
 
-    sort.Sort(ByNombre(ps))
-    fmt.Println(ps)
-
-    sort.Sort(ByEdad(ps))
-    fmt.Println(ps)
+    var input string
+    fmt.Scanln(&input)
 }
 
