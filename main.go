@@ -2,34 +2,21 @@ package main
 
 import (
     "fmt"
-    "os"
+    "container/list"
 )
 
 func main() {
-    archivo, err := os.Open("go.txt")
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-    defer archivo.Close()
+    var lista list.List
 
-    stat, err := archivo.Stat()
-    if err != nil {
-        fmt.Println(err)
-        return
+    lista.PushBack(4)
+    lista.PushBack("Go")
+    lista.PushFront(16.84)
+    lista.PushFront(true)
+
+    for e := lista.Front(); e != nil; e = e.Next() {
+        fmt.Println(e.Value)
     }
 
-    total := stat.Size()
-    b := make([]byte, total)
-
-    count, err := archivo.Read(b)
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-
-    cadena := string(b)
-    fmt.Println("bytes:", count)
-    fmt.Println(cadena)
+    fmt.Println(lista)
 }
 
