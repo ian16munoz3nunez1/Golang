@@ -2,6 +2,19 @@ package figuras
 
 import "math"
 
+type MultiFigura struct {
+    Figuras []Figura
+}
+
+func (mf *MultiFigura) Area() float64 {
+    var areaTotal float64
+    for _, f := range mf.Figuras {
+        areaTotal += f.Area()
+    }
+
+    return areaTotal
+}
+
 type Figura interface {
     Area() float64
 }

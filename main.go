@@ -18,10 +18,18 @@ func sumAreas(figs ...figuras.Figura) float64{
 func main() {
     c01 := figuras.Circulo{16}
     r01 := figuras.Rectangulo{2, 8}
-
     fmt.Println(c01, c01.Area())
     fmt.Println(r01, r01.Area())
 
     fmt.Println(sumAreas(&c01, &r01))
+
+    mf := figuras.MultiFigura{
+        Figuras: []figuras.Figura{
+            &c01,
+            &r01,
+            &figuras.Circulo{4},
+        },
+    }
+    fmt.Println(mf.Area())
 }
 
