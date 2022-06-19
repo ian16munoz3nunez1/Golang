@@ -2,21 +2,17 @@ package main
 
 import (
     "fmt"
-    "container/list"
+    "sort"
 )
 
 func main() {
-    var lista list.List
+    s1 := []int{8, 7, 6, 5}
 
-    lista.PushBack(4)
-    lista.PushBack("Go")
-    lista.PushFront(16.84)
-    lista.PushFront(true)
+    sort.Ints(s1)
+    fmt.Println(s1)
 
-    for e := lista.Front(); e != nil; e = e.Next() {
-        fmt.Println(e.Value)
-    }
-
-    fmt.Println(lista)
+    s2 := []int{1, 2, 3, 4}
+    sort.Sort(sort.Reverse(sort.IntSlice(s2)))
+    fmt.Println(s2)
 }
 
