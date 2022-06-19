@@ -2,34 +2,29 @@ package main
 
 import (
     "fmt"
-    "figuras/figuras"
+    "strings"
 )
 
-func sumAreas(figs ...figuras.Figura) float64{
-    areaTotal := 0.0
-
-    for _, fig := range figs {
-        areaTotal += fig.Area()
-    }
-
-    return areaTotal
-}
-
 func main() {
-    c01 := figuras.Circulo{16}
-    r01 := figuras.Rectangulo{2, 8}
-    fmt.Println(c01, c01.Area())
-    fmt.Println(r01, r01.Area())
+    cadena := "Arduino-C-Cpp-CSS-Go-HTML-Java-JS-Latino-Python-Ruby"
 
-    fmt.Println(sumAreas(&c01, &r01))
+    fmt.Println(cadena)
+    fmt.Println(strings.Contains(cadena, "Go"))
+    fmt.Println(strings.Count(cadena, "C"))
+    fmt.Println(strings.HasPrefix(cadena, "Arduino"))
+    fmt.Println(strings.HasSuffix(cadena, "Ruby"))
+    fmt.Println(strings.Index(cadena, "Go"))
+    fmt.Println(strings.Join([]string{"Android", "MATLAB", "MPLAB"}, "-"))
+    fmt.Println(strings.Repeat("Go ", 4))
+    fmt.Println(strings.Replace(cadena, "Python", "PHP", 1))
+    fmt.Println(strings.Split(cadena, "-"))
+    fmt.Println(strings.ToLower(cadena))
+    fmt.Println(strings.ToUpper(cadena))
 
-    mf := figuras.MultiFigura{
-        Figuras: []figuras.Figura{
-            &c01,
-            &r01,
-            &figuras.Circulo{4},
-        },
-    }
-    fmt.Println(mf.Area())
+    b := []byte("go")
+    fmt.Println(b)
+
+    s := string([]byte{'g', 'o'})
+    fmt.Println(s)
 }
 
