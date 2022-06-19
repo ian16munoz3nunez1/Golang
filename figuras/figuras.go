@@ -2,6 +2,10 @@ package figuras
 
 import "math"
 
+type Figura interface {
+    Area() float64
+}
+
 type Circulo struct {
     Radio float64
 }
