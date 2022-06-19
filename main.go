@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+    "encoding/json"
+    "fmt"
+)
 
 func main() {
     materias := map[string]map[string]int {
@@ -16,9 +19,10 @@ func main() {
 
     fmt.Println(materias)
 
-    fmt.Println(materias["Semestre 1"])
-    fmt.Println(materias["Semestre 2"]["Algoritmia"])
-    materias["Semestre 2"]["Algoritmia"] = 98
-    fmt.Println(materias["Semestre 2"]["Algoritmia"])
+    j, err := json.Marshal(materias)
+
+    fmt.Println(err)
+    fmt.Println(j)
+    fmt.Println(string(j))
 }
 
