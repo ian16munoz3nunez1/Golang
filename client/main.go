@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "net"
+    "encoding/gob"
 )
 
 func client() {
@@ -14,7 +15,10 @@ func client() {
 
     msg := "Hola mundo!"
     fmt.Println(msg)
-    sock.Write([]byte(msg))
+    err = gob.NewEncoder(sock).Encode(msg)
+    if err != nil {
+        fmt.Println(err)
+    }
     sock.Close()
 }
 

@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "net"
+    "encoding/gob"
 )
 
 func server() {
@@ -24,15 +25,14 @@ func server() {
 }
 
 func handleClient(conexion net.Conn) {
-    msg := make([]byte, 100)
-
-    b, err := conexion.Read(msg)
+    var msg string
+    
+    err := gob.NewDecoder(conexion).Decode(&msg)
     if err != nil {
         fmt.Println(err)
         return
     } else {
-        fmt.Println("Bytes:", b)
-        fmt.Println(">", string(msg[:b]))
+        fmt.Println(">", msg)
     }
 }
 
