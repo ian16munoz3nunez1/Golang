@@ -6,6 +6,11 @@ import (
     "encoding/gob"
 )
 
+type Persona struct {
+    Nombre string
+    Email []string
+}
+
 func server() {
     sock, err := net.Listen("tcp", ":9999")
     if err != nil {
@@ -25,14 +30,14 @@ func server() {
 }
 
 func handleClient(conexion net.Conn) {
-    var msg string
+    var persona Persona
     
-    err := gob.NewDecoder(conexion).Decode(&msg)
+    err := gob.NewDecoder(conexion).Decode(&persona)
     if err != nil {
         fmt.Println(err)
         return
     } else {
-        fmt.Println(">", msg)
+        fmt.Println(">", persona)
     }
 }
 

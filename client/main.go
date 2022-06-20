@@ -6,16 +6,19 @@ import (
     "encoding/gob"
 )
 
-func client() {
+type Persona struct {
+    Nombre string
+    Email []string
+}
+
+func client(persona Persona) {
     sock, err := net.Dial("tcp", ":9999")
     if err != nil {
         fmt.Println(err)
         return
     }
 
-    msg := "Hola mundo!"
-    fmt.Println(msg)
-    err = gob.NewEncoder(sock).Encode(msg)
+    err = gob.NewEncoder(sock).Encode(persona)
     if err != nil {
         fmt.Println(err)
     }
@@ -23,7 +26,14 @@ func client() {
 }
 
 func main() {
-    go client()
+    persona := Persona{
+        "juan",
+        []string{
+            "correo1@hotmail.com",
+            "correo2@gmail.com",
+        },
+    }
+    go client(persona)
 
     var input string
     fmt.Scanln(&input)
